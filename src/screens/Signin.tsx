@@ -73,11 +73,10 @@ const SignInScreen = () => {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
-                placeholder="Correo electrónico"
-                keyboardType="email-address"
+                placeholder="Nombre de usuario"
                 autoCapitalize="none"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
+                onChangeText={handleChange('username')}
+                onBlur={handleBlur('username')}
                 value={values.username}
               />
               {touched.username && errors.username && (

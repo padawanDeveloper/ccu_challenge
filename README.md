@@ -13,6 +13,11 @@ cd ios
 pod install
 ```
 
+```
+username: mor_2314
+password: 83r5^_
+```
+
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
