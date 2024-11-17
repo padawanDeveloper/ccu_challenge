@@ -10,6 +10,7 @@ interface IPdoductScreen {
 export type RootStackParamList = {
   Home: undefined;
   Product: IPdoductScreen;
+  auth?: undefined;
 };
 
 export const AppStack = createNativeStackNavigator({

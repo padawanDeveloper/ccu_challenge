@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStaticNavigation} from '@react-navigation/native';
 import {AuthStack, AppStack} from './MainNavigator';
+import {AuthLoadingScreen} from '../screens';
 
 export type RootStackParamList = {
   root: undefined;
@@ -9,9 +10,15 @@ export type RootStackParamList = {
 
 const AppNavigator = createNativeStackNavigator({
   screens: {
+    authLoading: {
+      screen: AuthLoadingScreen,
+      if: () => true,
+      options: {
+        headerShown: false,
+      },
+    },
     auth: {
       screen: AuthStack,
-      if: () => true,
       options: {
         headerShown: false,
       },

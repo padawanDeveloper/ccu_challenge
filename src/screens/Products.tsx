@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {
   FlatList,
-  SafeAreaView,
+  Button,
   StyleSheet,
+  SafeAreaView,
   View,
   Text,
   ActivityIndicator,
@@ -20,6 +21,10 @@ import {
   IProduct,
 } from '../state/features/products/productsSlice';
 import {RootStackParamList} from '../navigation/MainNavigator';
+import {PRODUCT_DETAIL, AUTH} from '../constants/screens';
+import {storeData} from '../utils/storage';
+
+import {USER_TOKEN} from '../constants';
 
 interface IMyState {
   product: IState;
@@ -29,9 +34,21 @@ const ProductList = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  useEffect(() => {
+    const handleBack = () => {
+      storeData('', USER_TOKEN);
+      navigation.navigate(AUTH);
+    };
+
+    navigation.setOptions({
+      headerLeft: () => <Button onPress={handleBack} title="Salir" />,
+    });
+  }, [navigation]);
 
   const products = useSelector((state: IMyState) => state.product.products);
   const isLoading = useSelector((state: IMyState) => state.product.loading);
@@ -39,7 +56,7 @@ const ProductList = () => {
 
   const handleSetCurrentProduct = (item: IProduct) => {
     dispatch(setCurrentProduct(item));
-    navigation.navigate('Product', {product: item});
+    navigation.navigate(PRODUCT_DETAIL, {product: item});
   };
 
   return (
@@ -52,7 +69,7 @@ const ProductList = () => {
             </View>
           ) : (
             <View style={styles.empty}>
-              <Text>0 results</Text>
+              <Text>{error ? 'Ocurrió un error inesperado' : '0 results'}</Text>
             </View>
           )
         }
