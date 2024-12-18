@@ -5,7 +5,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 ## Clone repo
 
 ```
-https://github.com/padawanDeveloper/ccu_challenge.git
+https://github.com/padawanDeveloper/soho-desafio.git
 ```
 
 ```
